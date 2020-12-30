@@ -1,0 +1,316 @@
+<main class="container-fluid mainsection dashboard_main">
+
+  <div id="title_row" class="row">
+    <div id="main-title" class="col">
+      <h1>Sveriges befolkning $(popnow_df.year)</h1>
+    </div>
+    <div id="population_total" class="col">
+      <h1>$(popnow_df.total_pop)</h1>
+    </div>
+  </div>
+
+  <div id="first_dash_row" class="dashboard_row row">
+    <div class="col-3">
+      <div class="chart_box">
+        <div id="gender_piechart">
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="chart_box">
+        <div id="ages_chart">
+        </div>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="chart_box">
+        <div id="dom_foreignborn_piechart">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="second_dash_row" class="dashboard_row row">
+    <div class="col-3">
+      <div class="chart_box">
+        <div id="income_chart">
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="chart_box">
+        <div id="education_chart">
+        </div>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="chart_box">
+        <div id="chart2">
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!--- Charts --->
+<script>
+male_pop = $(popnow_df.male_pop)
+female_pop = $(popnow_df.female_pop)
+
+var options = {
+              series: [male_pop, female_pop],
+              labels: ['Män', 'Kvinnor'],
+              chart:  {
+                      height: '100%',
+                      type: 'pie',
+                      zoom: {
+                            enabled: true
+                      },
+                      toolbar: {
+                           show: true,
+                           offsetX: 0,
+                           offsetY: 0,
+                           tools: {
+                             download: false,
+                             selection: true,
+                             zoom: true,
+                             zoomin: false,
+                             zoomout: false,
+                             pan: true,
+                             reset: true
+                           }
+                      }
+                    },
+              dataLabels: {
+                          enabled: true
+              },
+              title:  {
+                      text: 'Könsfördelning',
+                      align: 'center'
+              },
+              legend: {
+                      position: 'top',
+                      inverseOrder: true
+              },
+              };
+
+  var gender_piechart = new ApexCharts(document.querySelector("#gender_piechart"), options);
+  gender_piechart.render();
+</script>
+
+<script>
+total_ages = $(agesnow_df.total_ages)
+
+var options = {
+            series: [{
+                      name: 'Totalt',
+                      type: 'bar',
+                      data: total_ages
+            }],
+            chart:  {
+                    height: '100%',
+                    type: 'bar',
+                    stacked: true,
+                    zoom: {
+                          enabled: true
+                    },
+                    toolbar: {
+                         show: true,
+                         offsetX: 0,
+                         offsetY: 0,
+                         tools: {
+                           download: false,
+                           selection: true,
+                           zoom: true,
+                           zoomin: false,
+                           zoomout: false,
+                           pan: true,
+                           reset: true
+                         }
+                    }
+                  },
+            dataLabels: {
+                        enabled: false
+            },
+            title:  {
+                    text: 'Åldersfördelning',
+                    align: 'center'
+            },
+            grid: {
+                  row: {
+                        colors: ['transparent'], // takes an array which will be repeated on columns
+                        opacity: 0.5
+                        },
+            },
+            xaxis: {
+                    type: 'category',
+                    categories: $(agesnow_df.age),
+                    tickAmount: 9
+            },
+            };
+
+var ages_chart = new ApexCharts(document.querySelector("#ages_chart"), options);
+ages_chart.render();
+</script>
+
+<script>
+foreign_born = $(domestic_foreign_bornnow_df.foreign_born)
+dom_born_two_foreign_parents = $(domestic_foreign_bornnow_df.dom_born_two_foreign_parents)
+dom_born_one_foreign_parent = $(domestic_foreign_bornnow_df.dom_born_one_foreign_parent)
+dom_born = $(domestic_foreign_bornnow_df.dom_born)
+
+var options = {
+            series: [foreign_born,
+                    dom_born_two_foreign_parents,
+                    dom_born_one_foreign_parent,
+                    dom_born],
+            labels: ['Utrikes födda',
+                      'Inrikes födda - föräldrar utrikes födda',
+                      'Inrikes födda - en förälder utrikes född',
+                      'Inrikes födda'],
+            chart:  {
+                    height: '100%',
+                    type: 'pie',
+                    zoom: {
+                          enabled: true
+                    },
+                    toolbar: {
+                         show: true,
+                         offsetX: 0,
+                         offsetY: 0,
+                         tools: {
+                           download: false,
+                           selection: true,
+                           zoom: true,
+                           zoomin: false,
+                           zoomout: false,
+                           pan: true,
+                           reset: true
+                         }
+                    }
+                  },
+            dataLabels: {
+                        enabled: true
+            },
+            title:  {
+                    text: 'Utländsk/svensk bakgrund',
+                    align: 'center'
+            },
+            legend: {
+                    position: 'top',
+                    inverseOrder: true
+            },
+            };
+
+var dom_foreignborn_piechart = new ApexCharts(document.querySelector("#dom_foreignborn_piechart"), options);
+dom_foreignborn_piechart.render();
+</script>
+
+<script>
+total_income = $(incomenow_df.total_income)
+income = $(incomenow_df.income)
+
+var options = {
+              series: total_income,
+              labels: income,
+              chart:  {
+                      height: '100%',
+                      type: 'pie',
+                      zoom: {
+                            enabled: true
+                      },
+                      toolbar: {
+                           show: true,
+                           offsetX: 0,
+                           offsetY: 0,
+                           tools: {
+                             download: false,
+                             selection: true,
+                             zoom: true,
+                             zoomin: false,
+                             zoomout: false,
+                             pan: true,
+                             reset: true
+                           }
+                      }
+                    },
+              dataLabels: {
+                          enabled: true
+              },
+              title:  {
+                      text: 'Inkomst',
+                      align: 'center'
+              },
+              legend: {
+                      position: 'top',
+                      inverseOrder: true
+              },
+              };
+
+var income_chart = new ApexCharts(document.querySelector("#income_chart"), options);
+income_chart.render();
+</script>
+
+<script>
+edu_level = $(edu_level_grouped.edu_level)
+edu_labels = $(edu_level_grouped.edu_labels)
+count = $(edu_level_grouped.count)
+
+var options = {
+            series: [{
+                      name: 'Antal',
+                      type: 'bar',
+                      data: count
+            }],
+            colors: [
+                    colors[0],
+                    colors[1],
+                    colors[2],
+                    colors[3],
+                    colors[4],
+                    colors[5],
+                    colors[6],
+                    colors[7]
+            ],
+            chart:  {
+                    height: '100%',
+                    type: 'bar',
+                    zoom: {
+                          enabled: true
+                    },
+                    toolbar: {
+                         show: true,
+                         offsetX: 0,
+                         offsetY: 0,
+                         tools: {
+                           download: false,
+                           selection: true,
+                           zoom: true,
+                           zoomin: false,
+                           zoomout: false,
+                           pan: true,
+                           reset: true
+                         }
+                    }
+                  },
+            dataLabels: {
+                        enabled: false
+            },
+            title:  {
+                    text: 'Utbildningsnivå',
+                    align: 'center'
+            },
+            subtitle: {
+                      text: 'Personer 25-74 år',
+                      align: 'center'
+            },
+            xaxis: {
+                    type: 'category',
+                    categories: edu_labels
+            },
+            };
+
+    var education_chart = new ApexCharts(document.querySelector("#education_chart"), options);
+    education_chart.render();
+</script>

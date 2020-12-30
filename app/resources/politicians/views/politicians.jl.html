@@ -1,0 +1,43 @@
+<div id="chart" class="container-fluid" style="min-height: 365px;">
+</div>
+<div>
+$(df_age.fodd_ar)
+</div>
+
+<script>
+      var options = {
+        series: [{
+          name: "Antal födda detta år",
+          data: $(df_age.count)
+      }],
+        chart: {
+        height: 350,
+        type: 'bar',
+        zoom: {
+          enabled: false
+        }
+      },
+      dataLabels: {
+        enabled: false
+      },
+      stroke: {
+        curve: 'straight'
+      },
+      title: {
+        text: 'Distribution av födelseår bland nuvarande riksdagsledamöter',
+        align: 'left'
+      },
+      grid: {
+        row: {
+          colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+          opacity: 0.5
+        },
+      },
+      xaxis: {
+        categories: $(df_age.fodd_ar),
+      }
+      };
+
+      var chart = new ApexCharts(document.querySelector("#chart"), options);
+      chart.render();
+  </script>

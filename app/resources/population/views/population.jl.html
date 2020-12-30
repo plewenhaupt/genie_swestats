@@ -1,0 +1,203 @@
+<main class="">
+
+  <div id="section_Population" class="mainsection">
+    <div class="title_container">
+      <h1 class="page-title">Befolkningsmängd</h1>
+      <p class="source">(Källa: SCB)</p>
+    </div>
+
+    <div id="section_chartcontainer-population" class="container-fluid mainchart">
+      <div id="pop_chart">
+      </div>
+    </div>
+
+    <div class="container-fluid subchart">
+      <div id="popgrowth_chart">
+      </div>
+    </div>
+  </div>
+
+  <div class="story_button_container container-fluid">
+    <div class="story_button_row row">
+      <a href="/population_growth" id="button_1" class="story_button btn btn-primary col-md-4 col-4" role="button">
+        <p class="story_button_text">Vad består ökningen av?</p>
+      </a>
+      <button id="button_2" class="story_button btn btn-success col-md-4 col-4">
+        <a href="/dashboard">
+        <p class="story_button_text">Tillbaka till översikten</p>
+      </button>
+      <button id="button_3" class="story_button btn btn-danger col-md-4 col-4">
+        <a href="#section_chartcontainer-population">
+        <p class="story_button_text">Hur har antalet invandrade/utvandrade utvecklats?</p>
+      </button>
+    </div>
+  </div>
+
+</main>
+
+<!-- Charts -->
+<script>
+  male_pop = $(pop_df.male_pop)
+  female_pop = $(pop_df.female_pop)
+  total_pop = $(pop_df.total_pop)
+  max_pop = $(pop_df.total_pop)
+  yaxis_max = (Math.round(max_pop/1000000)+2)*1000000
+
+var options = {
+              series: [{
+                        name: 'Totalt',
+                        type: 'line',
+                        data: total_pop
+              },{
+                        name: 'Kvinnor',
+                        type: 'line',
+                        data: female_pop
+              },{
+                        name: 'Män',
+                        type: 'line',
+                        data: male_pop
+              }],
+              chart:  {
+                      height: '100%',
+                      type: 'line',
+                      zoom: {
+                            enabled: true
+                      },
+                      toolbar: {
+                           show: true,
+                           offsetX: 0,
+                           offsetY: 0,
+                           tools: {
+                             download: false,
+                             selection: true,
+                             zoom: true,
+                             zoomin: false,
+                             zoomout: false,
+                             pan: true,
+                             reset: true
+                           }
+                      }
+                    },
+              dataLabels: {
+                          enabled: false
+              },
+              stroke: {
+                      curve: 'smooth',
+                      width: [3, 2, 2]
+              },
+              title:  {
+                      text: '',
+                      align: 'left'
+              },
+              grid: {
+                    row: {
+                          colors: ['transparent'], // takes an array which will be repeated on columns
+                          opacity: 0.5
+                          },
+              },
+              xaxis: {
+                      type: 'numeric',
+                      categories: $(pop_df.year),
+                      tickAmount: 1,
+                      title: {
+                              text: 'Årtal'
+                      }
+              },
+              yaxis: {
+                      max: yaxis_max
+              },
+              legend: {
+                      position: 'top',
+                      horizontalAlign: "left"
+              },
+              };
+
+      var pop_chart = new ApexCharts(document.querySelector("#pop_chart"), options);
+      pop_chart.render();
+  </script>
+
+<script>
+  net_births = $(popgrowth_df.net_births)
+  net_migration = $(popgrowth_df.net_migration)
+  net_population_growth = $(popgrowth_df.net_population_growth)
+
+  max_popgrowth = $(popgrowth_df.net_population_growth)
+  yaxis_max = (Math.round(max_popgrowth/10000)+2)*10000
+
+  console.log(max_popgrowth)
+
+var options = {
+              series: [{
+                        name: 'Befolkningsökning',
+                        type: 'line',
+                        data: net_population_growth
+              },{
+                        name: 'Netto invandrade/utvandrade',
+                        type: 'bar',
+                        data: net_migration
+              },{
+                        name: 'Netto födda/döda',
+                        type: 'bar',
+                        data: net_births
+              }],
+              colors: [
+                      '#000000',
+                      colors[10],
+                      colors[12]
+              ],
+              chart:  {
+                      height: '100%',
+                      type: 'area',
+                      stacked: true,
+                      zoom: {
+                            enabled: true
+                      },
+                      toolbar: {
+                           show: true,
+                           offsetX: 0,
+                           offsetY: 0,
+                           tools: {
+                             download: false,
+                             selection: true,
+                             zoom: true,
+                             zoomin: false,
+                             zoomout: false,
+                             pan: true,
+                             reset: true
+                           }
+                      }
+                    },
+              dataLabels: {
+                          enabled: false
+              },
+              stroke: {
+                      curve: 'straight',
+                      width: 2
+              },
+              title:  {
+                      text: '',
+                      align: 'left'
+              },
+              grid: {
+                    row: {
+                          colors: ['transparent'], // takes an array which will be repeated on columns
+                          opacity: 0.5
+                          },
+              },
+              xaxis: {
+                      type: 'numeric',
+                      categories: $(popgrowth_df.year),
+                      tickAmount: 1,
+                      title: {
+                              text: 'Årtal'
+                      }
+              },
+              legend: {
+                      position: 'top',
+                      horizontalAlign: "left"
+              },
+              };
+
+      var popgrowth_chart = new ApexCharts(document.querySelector("#popgrowth_chart"), options);
+      popgrowth_chart.render();
+  </script>
