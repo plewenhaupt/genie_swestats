@@ -31,21 +31,21 @@
   </div>
 
   <div id="second_dash_row" class="dashboard_row row">
-    <div class="col-3">
-      <div class="chart_box">
-        <div id="income_chart">
-        </div>
-      </div>
-    </div>
-    <div class="col-6">
+    <div class="col-4">
       <div class="chart_box">
         <div id="education_chart">
         </div>
       </div>
     </div>
-    <div class="col-3">
+    <div class="col-4">
       <div class="chart_box">
-        <div id="chart2">
+        <div id="income_chart">
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="chart_box">
+        <div id="housing_chart">
         </div>
       </div>
     </div>
@@ -61,9 +61,10 @@ female_pop = $(popnow_df.female_pop)
 var options = {
               series: [male_pop, female_pop],
               labels: ['Män', 'Kvinnor'],
+              colors: [blues[5], greens[5]],
               chart:  {
                       height: '100%',
-                      type: 'pie',
+                      type: 'donut',
                       zoom: {
                             enabled: true
                       },
@@ -91,7 +92,15 @@ var options = {
               },
               legend: {
                       position: 'top',
-                      inverseOrder: true
+                      inverseOrder: true,
+                      fontSize: '10px'
+              },
+              plotOptions: {
+                            pie: {
+                              donut: {
+                                size: '50%'
+                              }
+                            }
               },
               };
 
@@ -101,6 +110,7 @@ var options = {
 
 <script>
 total_ages = $(agesnow_df.total_ages)
+ages_labels = $(agesnow_df.age)
 
 var options = {
             series: [{
@@ -108,6 +118,7 @@ var options = {
                       type: 'bar',
                       data: total_ages
             }],
+            colors: [colors[19]],
             chart:  {
                     height: '100%',
                     type: 'bar',
@@ -145,8 +156,12 @@ var options = {
             },
             xaxis: {
                     type: 'category',
-                    categories: $(agesnow_df.age),
-                    tickAmount: 9
+                    categories: ages_labels,
+                    tickAmount: 9,
+                    title: {
+                      text: "Ålder",
+                      offsetY: -15
+                    }
             },
             };
 
@@ -169,6 +184,7 @@ var options = {
                       'Inrikes födda - föräldrar utrikes födda',
                       'Inrikes födda - en förälder utrikes född',
                       'Inrikes födda'],
+            colors: [blues[3], greens[3], yellows[3], reds[3]],
             chart:  {
                     height: '100%',
                     type: 'pie',
@@ -199,57 +215,13 @@ var options = {
             },
             legend: {
                     position: 'top',
-                    inverseOrder: true
+                    inverseOrder: true,
+                    fontSize: '10px'
             },
             };
 
 var dom_foreignborn_piechart = new ApexCharts(document.querySelector("#dom_foreignborn_piechart"), options);
 dom_foreignborn_piechart.render();
-</script>
-
-<script>
-total_income = $(incomenow_df.total_income)
-income = $(incomenow_df.income)
-
-var options = {
-              series: total_income,
-              labels: income,
-              chart:  {
-                      height: '100%',
-                      type: 'pie',
-                      zoom: {
-                            enabled: true
-                      },
-                      toolbar: {
-                           show: true,
-                           offsetX: 0,
-                           offsetY: 0,
-                           tools: {
-                             download: false,
-                             selection: true,
-                             zoom: true,
-                             zoomin: false,
-                             zoomout: false,
-                             pan: true,
-                             reset: true
-                           }
-                      }
-                    },
-              dataLabels: {
-                          enabled: true
-              },
-              title:  {
-                      text: 'Inkomst',
-                      align: 'center'
-              },
-              legend: {
-                      position: 'top',
-                      inverseOrder: true
-              },
-              };
-
-var income_chart = new ApexCharts(document.querySelector("#income_chart"), options);
-income_chart.render();
 </script>
 
 <script>
@@ -259,20 +231,10 @@ count = $(edu_level_grouped.count)
 
 var options = {
             series: [{
-                      name: 'Antal',
-                      type: 'bar',
+                      name: "Antal",
                       data: count
             }],
-            colors: [
-                    colors[0],
-                    colors[1],
-                    colors[2],
-                    colors[3],
-                    colors[4],
-                    colors[5],
-                    colors[6],
-                    colors[7]
-            ],
+            colors: [yellows[0], yellows[3], yellows[6], yellows[9], yellows[12], yellows[15], yellows[18], yellows[21]],
             chart:  {
                     height: '100%',
                     type: 'bar',
@@ -305,12 +267,149 @@ var options = {
                       text: 'Personer 25-74 år',
                       align: 'center'
             },
+            legend: {
+                    show: false
+            },
             xaxis: {
-                    type: 'category',
                     categories: edu_labels
             },
-            };
+            plotOptions: {
+                          bar: {
+                            barHeight: '90%',
+                            horizontal: true,
+                            distributed: true,
+                            dataLabels: {
+                              position: 'bottom'
+                              },
+                            }
+            },
+};
 
     var education_chart = new ApexCharts(document.querySelector("#education_chart"), options);
     education_chart.render();
+</script>
+
+<script>
+total_income = $(incomenow_df.total_income)
+income_brackets = $(incomenow_df.income)
+
+var options = {
+              series: [{
+                        name: 'Antal',
+                        type: 'bar',
+                        data: total_income
+              }],
+              colors: [purples[3]],
+              chart:  {
+                      height: '100%',
+                      type: 'bar',
+                      zoom: {
+                            enabled: true
+                      },
+                      toolbar: {
+                           show: true,
+                           offsetX: 0,
+                           offsetY: 0,
+                           tools: {
+                             download: false,
+                             selection: true,
+                             zoom: true,
+                             zoomin: false,
+                             zoomout: false,
+                             pan: true,
+                             reset: true
+                           }
+                      }
+                    },
+              dataLabels: {
+                          enabled: false
+              },
+              title:  {
+                      text: 'Inkomstklass (tkr)',
+                      align: 'center'
+              },
+              subtitle: {
+                        text: 'Personer 20+ år',
+                        align: 'center'
+              },
+              legend: {
+                      show: false,
+                      position: 'top',
+                      inverseOrder: true,
+                      fontSize: '8px',
+                      markers: {
+                                width: 8,
+                                height: 8,
+                              },
+              },
+              xaxis: {
+                      type: 'category',
+                      categories: income_brackets
+              },
+              };
+
+var income_chart = new ApexCharts(document.querySelector("#income_chart"), options);
+income_chart.render();
+</script>
+
+
+
+<script>
+housing_labels = $(housing_grouped.housing_labels)
+total_housing = $(housing_grouped.total_housing)
+
+var options = {
+            series: [{
+                      name: "Antal",
+                      data: total_housing
+            }],
+            colors: [turquoises[0], turquoises[3], turquoises[6], turquoises[9], turquoises[12], turquoises[15], turquoises[18], purples[21]],
+            chart:  {
+                    height: '100%',
+                    type: 'bar',
+                    zoom: {
+                          enabled: true
+                    },
+                    toolbar: {
+                         show: true,
+                         offsetX: 0,
+                         offsetY: 0,
+                         tools: {
+                           download: false,
+                           selection: true,
+                           zoom: true,
+                           zoomin: false,
+                           zoomout: false,
+                           pan: true,
+                           reset: true
+                         }
+                    }
+                  },
+            dataLabels: {
+                        enabled: false
+            },
+            title:  {
+                    text: 'Boendeform',
+                    align: 'center'
+            },
+            legend: {
+                    show: false
+            },
+            xaxis: {
+                    categories: housing_labels
+            },
+            plotOptions: {
+                          bar: {
+                            barHeight: '90%',
+                            horizontal: true,
+                            distributed: true,
+                            dataLabels: {
+                              position: 'bottom'
+                              },
+                            }
+            },
+};
+
+    var housing_chart = new ApexCharts(document.querySelector("#housing_chart"), options);
+    housing_chart.render();
 </script>

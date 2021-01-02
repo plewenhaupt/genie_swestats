@@ -40,7 +40,7 @@
   male_pop = $(pop_df.male_pop)
   female_pop = $(pop_df.female_pop)
   total_pop = $(pop_df.total_pop)
-  max_pop = $(pop_df.total_pop)
+  max_pop = $(popnow_df.total_pop)
   yaxis_max = (Math.round(max_pop/1000000)+2)*1000000
 
 var options = {
@@ -121,7 +121,7 @@ var options = {
   net_migration = $(popgrowth_df.net_migration)
   net_population_growth = $(popgrowth_df.net_population_growth)
 
-  max_popgrowth = $(popgrowth_df.net_population_growth)
+  max_popgrowth = Math.max(...$(popgrowth_df.net_population_growth))
   yaxis_max = (Math.round(max_popgrowth/10000)+2)*10000
 
   console.log(max_popgrowth)
@@ -191,6 +191,9 @@ var options = {
                       title: {
                               text: 'Årtal'
                       }
+              },
+              yaxis: {
+                      max: yaxis_max
               },
               legend: {
                       position: 'top',

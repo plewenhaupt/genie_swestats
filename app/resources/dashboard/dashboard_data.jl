@@ -20,3 +20,8 @@ edu_level_grouped = @linq edu_levelnow_df |> groupby([:edu_level, :edu_labels]) 
 
 #Income
 income_df, incomenow_df = DataFunctions.income()
+
+#Housing
+housing_df, housingnow_df = DataFunctions.housing_form()
+
+housing_grouped = @linq housingnow_df |> where(:age .== "total")
