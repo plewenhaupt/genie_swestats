@@ -14,17 +14,26 @@
       <div class="chart_box">
         <div id="gender_piechart">
         </div>
+        <div class="lower_left_link">
+          <a class="more_link" href="/population">se mer >>></a>
+        </div>
       </div>
     </div>
     <div class="col-6">
       <div class="chart_box">
         <div id="ages_chart">
         </div>
+        <div class="lower_left_link">
+          <a href="/ages">se mer >>></a>
+        </div>
       </div>
     </div>
     <div class="col-3">
       <div class="chart_box">
         <div id="dom_foreignborn_piechart">
+        </div>
+        <div class="lower_left_link">
+          <a href="/population">se mer >>></a>
         </div>
       </div>
     </div>
@@ -35,17 +44,26 @@
       <div class="chart_box">
         <div id="education_chart">
         </div>
+        <div class="lower_left_link">
+          <a href="/population">se mer >>></a>
+        </div>
       </div>
     </div>
     <div class="col-4">
       <div class="chart_box">
         <div id="income_chart">
         </div>
+        <div class="lower_left_link">
+          <a href="/population">se mer >>></a>
+        </div>
       </div>
     </div>
     <div class="col-4">
       <div class="chart_box">
         <div id="housing_chart">
+        </div>
+        <div class="lower_left_link">
+          <a href="/population">se mer >>></a>
         </div>
       </div>
     </div>
@@ -61,7 +79,7 @@ female_pop = $(popnow_df.female_pop)
 var options = {
               series: [male_pop, female_pop],
               labels: ['Män', 'Kvinnor'],
-              colors: [blues[5], greens[5]],
+              colors: [greens[5], yellows[5]],
               chart:  {
                       height: '100%',
                       type: 'donut',
@@ -118,7 +136,6 @@ var options = {
                       type: 'bar',
                       data: total_ages
             }],
-            colors: [colors[19]],
             chart:  {
                     height: '100%',
                     type: 'bar',
@@ -184,7 +201,7 @@ var options = {
                       'Inrikes födda - föräldrar utrikes födda',
                       'Inrikes födda - en förälder utrikes född',
                       'Inrikes födda'],
-            colors: [blues[3], greens[3], yellows[3], reds[3]],
+            colors: [blues[0], greens[4], yellows[4], reds[0]],
             chart:  {
                     height: '100%',
                     type: 'pie',
@@ -234,7 +251,7 @@ var options = {
                       name: "Antal",
                       data: count
             }],
-            colors: [yellows[0], yellows[3], yellows[6], yellows[9], yellows[12], yellows[15], yellows[18], yellows[21]],
+            colors: [oranges[0], oranges[3], oranges[6], oranges[9], oranges[12], oranges[15], oranges[18], oranges[21]],
             chart:  {
                     height: '100%',
                     type: 'bar',
@@ -271,7 +288,12 @@ var options = {
                     show: false
             },
             xaxis: {
-                    categories: edu_labels
+                    categories: edu_labels,
+                    labels: {
+                             show: true,
+                             rotate: -15,
+                             rotateAlways: true
+                    }
             },
             plotOptions: {
                           bar: {
@@ -325,7 +347,7 @@ var options = {
                           enabled: false
               },
               title:  {
-                      text: 'Inkomstklass (tkr)',
+                      text: 'Inkomst (tkr)',
                       align: 'center'
               },
               subtitle: {
@@ -396,7 +418,12 @@ var options = {
                     show: false
             },
             xaxis: {
-                    categories: housing_labels
+                    categories: housing_labels,
+                    labels: {
+                             show: true,
+                             rotate: -15,
+                             rotateAlways: true
+                    }
             },
             plotOptions: {
                           bar: {

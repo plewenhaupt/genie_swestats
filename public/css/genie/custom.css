@@ -269,8 +269,6 @@ footer {
 }
 
 .chart_box {
-  padding-top: 0em;
-  padding-bottom: 1em;
   padding-left: 1em;
   padding-right: 1em;
   background-color: #ffffff;
@@ -278,6 +276,14 @@ footer {
   box-shadow: 0px 1px 22px -12px #607D8B;
 }
 
+.lower_left_link {
+  height: 1.5em;
+  position: absolute;
+  bottom:0px;
+  left:0px;
+  padding-left: .2em;
+  font-size: 12px;
+}
 
 /*  Section styles ##################################*/
 .mainsection {
@@ -297,15 +303,15 @@ footer {
 
 /* Chart Styles   ##################################*/
 .mainchart {
-  height: 60vh;
+  height: 57vh;
   padding-top: 0.5em;
-  padding-bottom: 3em;
+  padding-bottom: 1em;
   padding-left: 3em;
   padding-right: 3em;
 }
 
 .subchart {
-  height: 30vh;
+  height: 32vh;
   padding-top: 0.5em;
   padding-bottom: 3em;
   padding-left: 3em;
@@ -325,7 +331,7 @@ footer {
 }
 
 .story_button_row {
-  height: 4em;
+  height: 2em;
   vertical-align: middle;
 }
 

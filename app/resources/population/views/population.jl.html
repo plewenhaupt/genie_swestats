@@ -22,8 +22,7 @@
       <a href="/population_growth" id="button_1" class="story_button btn btn-primary col-md-4 col-4" role="button">
         <p class="story_button_text">Vad består ökningen av?</p>
       </a>
-      <button id="button_2" class="story_button btn btn-success col-md-4 col-4">
-        <a href="/dashboard">
+      <button onclick="window.location.href='/dashboard';" id="button_2" class="story_button btn btn-success col-md-4 col-4">
         <p class="story_button_text">Tillbaka till översikten</p>
       </button>
       <button id="button_3" class="story_button btn btn-danger col-md-4 col-4">
@@ -57,7 +56,12 @@ var options = {
                         type: 'line',
                         data: male_pop
               }],
+              colors: ['#000000',
+                        yellows[5],
+                        greens[5]],
               chart:  {
+                      id: 'population',
+                      group: 'pop',
                       height: '100%',
                       type: 'line',
                       zoom: {
@@ -99,16 +103,22 @@ var options = {
                       type: 'numeric',
                       categories: $(pop_df.year),
                       tickAmount: 1,
+                      position: 'bottom',
+                      labels: {
+                        show: true
+                      },
                       title: {
                               text: 'Årtal'
                       }
               },
-              yaxis: {
-                      max: yaxis_max
-              },
               legend: {
                       position: 'top',
-                      horizontalAlign: "left"
+                      horizontalAlign: "center"
+              },
+              tooltip: {
+                x: {
+                  show: false
+                },
               },
               };
 
@@ -122,13 +132,11 @@ var options = {
   net_population_growth = $(popgrowth_df.net_population_growth)
 
   max_popgrowth = Math.max(...$(popgrowth_df.net_population_growth))
-  yaxis_max = (Math.round(max_popgrowth/10000)+2)*10000
-
-  console.log(max_popgrowth)
+  yaxis_max = (Math.round(max_popgrowth/10000)+1)*10000
 
 var options = {
               series: [{
-                        name: 'Befolkningsökning',
+                        name: 'Total befolkningsökning',
                         type: 'line',
                         data: net_population_growth
               },{
@@ -142,12 +150,14 @@ var options = {
               }],
               colors: [
                       '#000000',
-                      colors[10],
-                      colors[12]
+                      blues[3],
+                      reds[3]
               ],
               chart:  {
+                      id: 'population_growth',
+                      group: 'pop',
                       height: '100%',
-                      type: 'area',
+                      type: 'line',
                       stacked: true,
                       zoom: {
                             enabled: true
@@ -172,11 +182,11 @@ var options = {
               },
               stroke: {
                       curve: 'straight',
-                      width: 2
+                      width: 1
               },
               title:  {
-                      text: '',
-                      align: 'left'
+                      text: 'Befolkningsökning',
+                      align: 'center'
               },
               grid: {
                     row: {
@@ -188,16 +198,23 @@ var options = {
                       type: 'numeric',
                       categories: $(popgrowth_df.year),
                       tickAmount: 1,
-                      title: {
-                              text: 'Årtal'
-                      }
+                      labels: {
+                        show: false
+                      },
               },
               yaxis: {
-                      max: yaxis_max
+                max: yaxis_max,
+                min: -30000,
+                forceNiceScale: true
               },
               legend: {
                       position: 'top',
-                      horizontalAlign: "left"
+                      horizontalAlign: "center"
+              },
+              tooltip: {
+                x: {
+                  show: false
+                },
               },
               };
 
