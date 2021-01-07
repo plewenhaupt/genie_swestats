@@ -249,6 +249,47 @@ footer {
 
 /*  Chart pages style #######################################################*/
 /* Dashboard styles ##################################*/
+#title_row {
+    margin-top: 1em;
+    background-color: #ffffff;
+    box-shadow: 0px 1px 22px -12px #607D8B;
+    color: #000000;
+    margin-left: .1em;
+    margin-right: .1em;
+}
+
+#main-title {
+
+}
+
+#main-title > h1 {
+  font-size: 2em;
+  display: flex;
+  height: 90%;
+  width:100%;
+  align-items: center;
+}
+
+#population_total > h1 {
+  font-size: 3em;
+  display: flex;
+  height: 90%;
+  width:100%;
+  align-items: center;
+}
+
+#pop_link {
+  display: none;
+  height: 90%;
+  width:100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.pop_link:hover > #pop_link {
+  display: inline-block;
+}
+
 .dashboard_main {
   background-color: #eff4f7;
   color: #777
@@ -257,14 +298,14 @@ footer {
 #first_dash_row {
   height: 40vh;
   margin-top: 1em;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
   position:relative;
 }
 
 #second_dash_row {
   height: 40vh;
-  margin-top: 2em;
-  margin-bottom: 2em;
+  margin-top: 1em;
+  margin-bottom: 1em;
   position:relative;
 }
 
@@ -277,6 +318,7 @@ footer {
 }
 
 .lower_left_link {
+  display: none;
   height: 1.5em;
   position: absolute;
   bottom:0px;
@@ -285,6 +327,29 @@ footer {
   font-size: 12px;
 }
 
+.chart_box:hover > #gender_link {
+  display: block;
+}
+
+.chart_box:hover > #ages_link {
+  display: block;
+}
+
+.chart_box:hover > #dom_for_link {
+  display: block;
+}
+
+.chart_box:hover > #education_link {
+  display: block;
+}
+
+.chart_box:hover > #income_link {
+  display: block;
+}
+
+.chart_box:hover > #housing_link {
+  display: block;
+}
 /*  Section styles ##################################*/
 .mainsection {
   padding-top: 43px;

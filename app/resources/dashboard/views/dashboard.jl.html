@@ -1,11 +1,12 @@
 <main class="container-fluid mainsection dashboard_main">
 
   <div id="title_row" class="row">
-    <div id="main-title" class="col">
-      <h1>Sveriges befolkning $(popnow_df.year)</h1>
+    <div id="main-title" class="col-5">
+      <h1>Befolkningsmängd Sverige, $(popnow_df.year):</h1>
     </div>
-    <div id="population_total" class="col">
+    <div id="population_total" class="pop_link col-7">
       <h1>$(popnow_df.total_pop)</h1>
+      <a id="pop_link" class="title_link" href="/population">Se utveckling >>></a>
     </div>
   </div>
 
@@ -14,27 +15,21 @@
       <div class="chart_box">
         <div id="gender_piechart">
         </div>
-        <div class="lower_left_link">
-          <a class="more_link" href="/population">se mer >>></a>
-        </div>
+        <a id="gender_link" class="lower_left_link" href="/population">Se utveckling >>></a>
       </div>
     </div>
     <div class="col-6">
       <div class="chart_box">
         <div id="ages_chart">
         </div>
-        <div class="lower_left_link">
-          <a href="/ages">se mer >>></a>
-        </div>
+        <a id="ages_link" class="lower_left_link" href="/population">Se utveckling >>></a>
       </div>
     </div>
     <div class="col-3">
       <div class="chart_box">
         <div id="dom_foreignborn_piechart">
         </div>
-        <div class="lower_left_link">
-          <a href="/population">se mer >>></a>
-        </div>
+        <a id="dom_for_link" class="lower_left_link" href="/population">Se utveckling >>></a>
       </div>
     </div>
   </div>
@@ -44,27 +39,21 @@
       <div class="chart_box">
         <div id="education_chart">
         </div>
-        <div class="lower_left_link">
-          <a href="/population">se mer >>></a>
-        </div>
+        <a id="education_link" class="lower_left_link" href="/population">Se utveckling >>></a>
       </div>
     </div>
     <div class="col-4">
       <div class="chart_box">
         <div id="income_chart">
         </div>
-        <div class="lower_left_link">
-          <a href="/population">se mer >>></a>
-        </div>
+        <a id="income_link" class="lower_left_link" href="/population">Se utveckling >>></a>
       </div>
     </div>
     <div class="col-4">
       <div class="chart_box">
         <div id="housing_chart">
         </div>
-        <div class="lower_left_link">
-          <a href="/population">se mer >>></a>
-        </div>
+        <a id="housing_link" class="lower_left_link" href="/population">Se utveckling >>></a>
       </div>
     </div>
   </div>
@@ -292,7 +281,12 @@ var options = {
                     labels: {
                              show: true,
                              rotate: -15,
-                             rotateAlways: true
+                             rotateAlways: true,
+                             offsetX: -3,
+                             style: {
+                               fontSize: '10px'
+                             },
+
                     }
             },
             plotOptions: {
@@ -347,7 +341,7 @@ var options = {
                           enabled: false
               },
               title:  {
-                      text: 'Inkomst (tkr)',
+                      text: 'Inkomstfördelning (tkr)',
                       align: 'center'
               },
               subtitle: {
@@ -366,7 +360,13 @@ var options = {
               },
               xaxis: {
                       type: 'category',
-                      categories: income_brackets
+                      categories: income_brackets,
+                      labels: {
+                        style: {
+                          fontSize: '9px'
+                        },
+                      },
+
               },
               };
 
@@ -422,8 +422,13 @@ var options = {
                     labels: {
                              show: true,
                              rotate: -15,
-                             rotateAlways: true
-                    }
+                             rotateAlways: true,
+                             offsetX: -3,
+                             style: {
+                               fontSize: '10px'
+                             },
+
+                    },
             },
             plotOptions: {
                           bar: {
