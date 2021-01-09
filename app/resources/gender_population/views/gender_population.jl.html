@@ -124,8 +124,10 @@ var options = {
   </script>
 
 <script>
-  net_births = $(popgrowth_df.net_births)
-  net_migration = $(popgrowth_df.net_migration)
+  net_male_births = $(popgrowth_df.net_male_births)
+  net_female_births = $(popgrowth_df.net_female_births)
+  net_male_migration = $(popgrowth_df.net_male_migration)
+  net_female_migration = $(popgrowth_df.net_female_migration)
   net_population_growth = $(popgrowth_df.net_population_growth)
 
   max_popgrowth = Math.max(...$(popgrowth_df.net_population_growth))
@@ -137,18 +139,28 @@ var options = {
                         type: 'line',
                         data: net_population_growth
               },{
-                        name: 'Netto invandrade/utvandrade',
+                        name: 'Netto invandrade/utvandrade män',
                         type: 'bar',
-                        data: net_migration
+                        data: net_male_migration
               },{
-                        name: 'Netto födda/döda',
+                        name: 'Netto invandrade/utvandrade kvinnor',
                         type: 'bar',
-                        data: net_births
+                        data: net_female_migration
+              },{
+                        name: 'Netto födda/döda män',
+                        type: 'bar',
+                        data: net_male_births
+              },{
+                        name: 'Netto födda/döda kvinnor',
+                        type: 'bar',
+                        data: net_female_births
               }],
               colors: [
                       '#000000',
                       blues[3],
-                      reds[3]
+                      reds[3],
+                      blues[11],
+                      reds[11]
               ],
               chart:  {
                       id: 'population_growth',
