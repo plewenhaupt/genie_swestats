@@ -2,17 +2,17 @@
 
   <div id="section_Population" class="mainsection">
     <div class="title_container">
-      <h1 class="page-title">Befolkningsmängd</h1>
+      <h1 class="page-title">Befolkningsmängd per kön</h1>
       <p class="source">(Källa: SCB)</p>
     </div>
 
     <div id="section_chartcontainer-population" class="container-fluid mainchart">
-      <div id="pop_chart">
+      <div id="gender_pop_chart">
       </div>
     </div>
 
     <div class="container-fluid subchart">
-      <div id="popgrowth_chart">
+      <div id="gender_popgrowth_chart">
       </div>
     </div>
   </div>
@@ -44,10 +44,6 @@
 
 var options = {
               series: [{
-                        name: 'Totalt',
-                        type: 'line',
-                        data: total_pop
-              },{
                         name: 'Kvinnor',
                         type: 'line',
                         data: female_pop
@@ -56,11 +52,10 @@ var options = {
                         type: 'line',
                         data: male_pop
               }],
-              colors: ['#000000',
+              colors: [
                         yellows[5],
                         greens[5]],
               chart:  {
-                      id: 'population',
                       height: '100%',
                       type: 'line',
                       zoom: {
@@ -86,7 +81,7 @@ var options = {
               },
               stroke: {
                       curve: 'smooth',
-                      width: [3, 2, 2]
+                      width: [3, 3]
               },
               title:  {
                       text: '',
@@ -124,8 +119,8 @@ var options = {
               },
               };
 
-      var pop_chart = new ApexCharts(document.querySelector("#pop_chart"), options);
-      pop_chart.render();
+      var gender_pop_chart = new ApexCharts(document.querySelector("#gender_pop_chart"), options);
+      gender_pop_chart.render();
   </script>
 
 <script>
@@ -232,6 +227,6 @@ var options = {
               },
               };
 
-      var popgrowth_chart = new ApexCharts(document.querySelector("#popgrowth_chart"), options);
-      popgrowth_chart.render();
+      var gender_popgrowth_chart = new ApexCharts(document.querySelector("#gender_popgrowth_chart"), options);
+      gender_popgrowth_chart.render();
   </script>

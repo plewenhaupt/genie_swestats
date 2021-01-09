@@ -258,13 +258,10 @@ footer {
     margin-right: .1em;
 }
 
-#main-title {
-
-}
-
-#main-title > h1 {
+#main_title > h1 {
   font-size: 2em;
   display: flex;
+  margin-left: 1em;
   height: 90%;
   width:100%;
   align-items: center;
@@ -272,22 +269,32 @@ footer {
 
 #population_total > h1 {
   font-size: 3em;
-  display: flex;
+  display: inline-flex;
   height: 90%;
-  width:100%;
   align-items: center;
+  margin-right: 4em;
+}
+
+.pop_link {
+  display: flex;
 }
 
 #pop_link {
-  display: none;
+  opacity: 0;
+  font-size: 2em;
+  margin-top: .2em;
   height: 90%;
-  width:100%;
-  align-items: center;
+  align-items: baseline;
   justify-content: center;
+  -o-transition:opacity .3s ease-in-out;
+  -ms-transition:opacity .3s ease-in-out;
+  -moz-transition:opacity .3s ease-in-out;
+  -webkit-transition:opacity .3s ease-in-out;
+  transition:opacity .3s ease-in-out;
 }
 
-.pop_link:hover > #pop_link {
-  display: inline-block;
+#title_row:hover #pop_link {
+  opacity: 1;
 }
 
 .dashboard_main {
@@ -318,37 +325,42 @@ footer {
 }
 
 .lower_left_link {
-  display: none;
+  opacity: 0;
   height: 1.5em;
   position: absolute;
   bottom:0px;
   left:0px;
   padding-left: .2em;
   font-size: 12px;
+  -o-transition:opacity .3s ease-in-out;
+  -ms-transition:opacity .3s ease-in-out;
+  -moz-transition:opacity .3s ease-in-out;
+  -webkit-transition:opacity .3s ease-in-out;
+  transition:opacity .3s ease-in-out;
 }
 
 .chart_box:hover > #gender_link {
-  display: block;
+  opacity: 1;
 }
 
 .chart_box:hover > #ages_link {
-  display: block;
+  opacity: 1;
 }
 
 .chart_box:hover > #dom_for_link {
-  display: block;
+  opacity: 1;
 }
 
 .chart_box:hover > #education_link {
-  display: block;
+  opacity: 1;
 }
 
 .chart_box:hover > #income_link {
-  display: block;
+  opacity: 1;
 }
 
 .chart_box:hover > #housing_link {
-  display: block;
+  opacity: 1;
 }
 /*  Section styles ##################################*/
 .mainsection {
