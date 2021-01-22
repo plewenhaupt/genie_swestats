@@ -135,32 +135,33 @@ var options = {
 
 var options = {
               series: [{
-                        name: 'Total befolkningsökning',
-                        type: 'line',
-                        data: net_population_growth
-              },{
                         name: 'Netto invandrade/utvandrade män',
                         type: 'bar',
                         data: net_male_migration
-              },{
-                        name: 'Netto invandrade/utvandrade kvinnor',
-                        type: 'bar',
-                        data: net_female_migration
               },{
                         name: 'Netto födda/döda män',
                         type: 'bar',
                         data: net_male_births
               },{
+                        name: 'Netto invandrade/utvandrade kvinnor',
+                        type: 'bar',
+                        data: net_female_migration
+              },{
                         name: 'Netto födda/döda kvinnor',
                         type: 'bar',
                         data: net_female_births
+              },{
+                        name: 'Total befolkningsökning',
+                        type: 'line',
+                        data: net_population_growth
               }],
               colors: [
-                      '#000000',
-                      blues[3],
-                      reds[3],
-                      blues[11],
-                      reds[11]
+
+                      greens[3],
+                      greens[11],
+                      yellows[3],
+                      yellows[11],
+                      '#000000'
               ],
               chart:  {
                       id: 'population_growth',

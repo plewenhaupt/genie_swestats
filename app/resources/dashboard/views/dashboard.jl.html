@@ -68,7 +68,6 @@ female_pop = $(popnow_df.female_pop)
 var options = {
               series: [male_pop, female_pop],
               labels: ['Män', 'Kvinnor'],
-              colors: [greens[5], yellows[5]],
               chart:  {
                       height: '100%',
                       type: 'donut',
@@ -108,6 +107,10 @@ var options = {
                                 size: '50%'
                               }
                             }
+              },
+              theme: {
+                      mode: 'light',
+                      palette: 'palette3',
               },
               };
 
@@ -169,6 +172,10 @@ var options = {
                       offsetY: -15
                     }
             },
+            theme: {
+                    mode: 'light',
+                    palette: 'palette3',
+            },
             };
 
 var ages_chart = new ApexCharts(document.querySelector("#ages_chart"), options);
@@ -190,7 +197,6 @@ var options = {
                       'Inrikes födda - föräldrar utrikes födda',
                       'Inrikes födda - en förälder utrikes född',
                       'Inrikes födda'],
-            colors: [blues[0], greens[4], yellows[4], reds[0]],
             chart:  {
                     height: '100%',
                     type: 'pie',
@@ -224,6 +230,10 @@ var options = {
                     inverseOrder: true,
                     fontSize: '10px'
             },
+            theme: {
+                    mode: 'light',
+                    palette: 'palette2',
+            },
             };
 
 var dom_foreignborn_piechart = new ApexCharts(document.querySelector("#dom_foreignborn_piechart"), options);
@@ -240,7 +250,6 @@ var options = {
                       name: "Antal",
                       data: count
             }],
-            colors: [oranges[0], oranges[3], oranges[6], oranges[9], oranges[12], oranges[15], oranges[18], oranges[21]],
             chart:  {
                     height: '100%',
                     type: 'bar',
@@ -299,6 +308,15 @@ var options = {
                               },
                             }
             },
+            theme: {
+                    mode: 'light',
+                    monochrome: {
+                        enabled: true,
+                        color: '#FD7717',
+                        shadeTo: 'dark',
+                        shadeIntensity: 0.65
+                    },
+            },
 };
 
     var education_chart = new ApexCharts(document.querySelector("#education_chart"), options);
@@ -315,7 +333,6 @@ var options = {
                         type: 'bar',
                         data: total_income
               }],
-              colors: [purples[3]],
               chart:  {
                       height: '100%',
                       type: 'bar',
@@ -367,6 +384,10 @@ var options = {
                         },
                       },
 
+              },
+              theme: {
+                      mode: 'light',
+                      palette: 'palette7',
               },
               };
 
@@ -439,6 +460,15 @@ var options = {
                               position: 'bottom'
                               },
                             }
+            },
+            theme: {
+                    mode: 'light',
+                    monochrome: {
+                        enabled: true,
+                        color: '#00f529',
+                        shadeTo: 'dark',
+                        shadeIntensity: 0.65
+                    },
             },
 };
 

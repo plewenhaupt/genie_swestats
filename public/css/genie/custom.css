@@ -245,8 +245,6 @@ footer {
 
 /*END HOME PAGE STYLES*/
 
-
-
 /*  Chart pages style #######################################################*/
 /* Dashboard styles ##################################*/
 #title_row {
@@ -371,24 +369,25 @@ footer {
 .page-title {
   text-align: center;
   margin-bottom: 0px;
+  font-size: 30px;
 }
 
 .source {
   text-align: center;
   font-size: 12px;
+  margin-bottom: 0px;
 }
 
 /* Chart Styles   ##################################*/
 .mainchart {
-  height: 57vh;
+  height: 50vh;
   padding-top: 0.5em;
-  padding-bottom: 1em;
   padding-left: 3em;
   padding-right: 3em;
 }
 
 .subchart {
-  height: 32vh;
+  height: 40vh;
   padding-top: 0.5em;
   padding-bottom: 3em;
   padding-left: 3em;
