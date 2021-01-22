@@ -8,11 +8,14 @@ route("/hello") do
   "Welcome to Genie!"
 end
 
-using FrontpageController
-route("/frontpage", FrontpageController.frontpage)
-
 using DashboardController
 route("/dashboard", DashboardController.dashboard)
+
+using DomforController
+route("/domfor", DomforController.domfor)
+
+using FrontpageController
+route("/frontpage", FrontpageController.frontpage)
 
 using GenderPopulationController
 route("/gender_population", GenderPopulationController.gender_population)

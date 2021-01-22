@@ -29,7 +29,7 @@
       <div class="chart_box">
         <div id="dom_foreignborn_piechart">
         </div>
-        <a id="dom_for_link" class="lower_left_link" href="/population">Se utveckling >>></a>
+        <a id="dom_for_link" class="lower_left_link" href="/domfor">Se utveckling >>></a>
       </div>
     </div>
   </div>
@@ -189,14 +189,15 @@ dom_born_one_foreign_parent = $(domestic_foreign_bornnow_df.dom_born_one_foreign
 dom_born = $(domestic_foreign_bornnow_df.dom_born)
 
 var options = {
-            series: [foreign_born,
-                    dom_born_two_foreign_parents,
+            series: [dom_born,
                     dom_born_one_foreign_parent,
-                    dom_born],
-            labels: ['Utrikes födda',
-                      'Inrikes födda - föräldrar utrikes födda',
+                    dom_born_two_foreign_parents,
+                    foreign_born],
+            labels: ['Inrikes födda',
                       'Inrikes födda - en förälder utrikes född',
-                      'Inrikes födda'],
+                      'Inrikes födda - föräldrar utrikes födda',
+                      'Utrikes födda',
+                      ],
             chart:  {
                     height: '100%',
                     type: 'pie',

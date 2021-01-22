@@ -1,0 +1,232 @@
+<main class="">
+
+  <div class="mainsection">
+    <div class="title_container">
+      <h1 class="page-title">Befolkningens ursprung</h1>
+      <p class="source">(Källa: SCB)</p>
+    </div>
+
+    <div class="container-fluid mainchart">
+      <div id="domfor_chart">
+      </div>
+    </div>
+
+    <div class="container-fluid subchart">
+      <div id="domforgrowth_chart">
+      </div>
+    </div>
+  </div>
+
+  <div class="story_button_container container-fluid">
+    <div class="story_button_row row">
+      <button onclick="window.location.href='/dashboard';" id="button_1" class="story_button btn btn-primary col-md-4 col-4">
+        <p class="story_button_text">Tillbaka till översikten</p>
+      </button>
+      <button onclick="window.location.href='/dashboard';" id="button_2" class="story_button btn btn-success col-md-4 col-4">
+        <p class="story_button_text">Tillbaka till översikten</p>
+      </button>
+      <button onclick="window.location.href='/dashboard';" id="button_3" class="story_button btn btn-danger col-md-4 col-4">
+        <p class="story_button_text">Tillbaka till översikten</p>
+      </button>
+    </div>
+  </div>
+
+</main>
+
+<!-- Charts -->
+<script>
+  dom = $(domestic_foreign_born_df.dom_born)
+  dom_1for = $(domestic_foreign_born_df.dom_born_one_foreign_parent)
+  dom_2for = $(domestic_foreign_born_df.dom_born_two_foreign_parents)
+  forborn = $(domestic_foreign_born_df.foreign_born)
+  forback = $(domestic_foreign_born_df.percent_forback)
+
+var options = {
+              series: [{
+                        name: 'Inrikes födda',
+                        type: 'area',
+                        data: dom
+              },{
+                        name: 'Inrikes födda - en förälder utrikes född',
+                        type: 'area',
+                        data: dom_1for
+              },{
+                        name: 'Inrikes födda - föräldrar utrikes födda',
+                        type: 'area',
+                        data: dom_2for
+              },{
+                        name: 'Utrikes födda',
+                        type: 'area',
+                        data: forborn
+              },{
+                        name: 'Procent med utrikes bakgrund',
+                        type: 'line',
+                        data: forborn
+              }],
+              chart:  {
+                      height: '100%',
+                      type: 'area',
+                      stacked: true,
+                      zoom: {
+                            enabled: true
+                      },
+                      toolbar: {
+                           show: true,
+                           offsetX: 0,
+                           offsetY: 0,
+                           tools: {
+                             download: false,
+                             selection: true,
+                             zoom: true,
+                             zoomin: false,
+                             zoomout: false,
+                             pan: true,
+                             reset: true
+                           }
+                      }
+                    },
+              dataLabels: {
+                          enabled: false
+              },
+              stroke: {
+                      curve: 'smooth',
+                      width: 1
+              },
+              fill: {
+                type: 'solid'
+              },
+              title:  {
+                      text: '',
+                      align: 'left'
+              },
+              grid: {
+                    row: {
+                          colors: ['transparent'], // takes an array which will be repeated on columns
+                          opacity: 0.5
+                          },
+              },
+              xaxis: {
+                      type: 'category',
+                      categories: $(domestic_foreign_born_df.year),
+                      position: 'bottom',
+                      labels: {
+                               show: true
+                      },
+                      tooltip: {
+                                enabled: false,
+                      },
+              },
+              legend: {
+                      position: 'top',
+                      horizontalAlign: "center"
+              },
+              tooltip: {
+                x: {
+                  show: true
+                },
+              },
+              theme: {
+                      mode: 'light',
+                      palette: 'palette2',
+              },
+              };
+
+      var domfor_chart = new ApexCharts(document.querySelector("#domfor_chart"), options);
+      domfor_chart.render();
+  </script>
+
+<script>
+  dom = $(domestic_foreign_born_df.dom_born_diff)
+  dom_1for = $(domestic_foreign_born_df.dom_born_one_foreign_parent_diff)
+  dom_2for = $(domestic_foreign_born_df.dom_born_two_foreign_parents_diff)
+  forborn = $(domestic_foreign_born_df.foreign_born_diff)
+
+var options = {
+              series: [{
+                        name: 'Inrikes födda',
+                        type: 'bar',
+                        data: dom
+              },{
+                        name: 'Inrikes födda - en förälder utrikes född',
+                        type: 'bar',
+                        data: dom_1for
+              },{
+                        name: 'Inrikes födda - föräldrar utrikes födda',
+                        type: 'bar',
+                        data: dom_2for
+              },{
+                        name: 'Utrikes födda',
+                        type: 'bar',
+                        data: forborn
+              }],
+              chart:  {
+                      id: 'population_growth',
+                      height: '100%',
+                      type: 'bar',
+                      zoom: {
+                            enabled: true
+                      },
+                      toolbar: {
+                           show: true,
+                           offsetX: 0,
+                           offsetY: 0,
+                           tools: {
+                             download: false,
+                             selection: true,
+                             zoom: true,
+                             zoomin: false,
+                             zoomout: false,
+                             pan: true,
+                             reset: true
+                           }
+                      }
+                    },
+              dataLabels: {
+                          enabled: false
+              },
+              title:  {
+                      text: 'Utveckling',
+                      align: 'center'
+              },
+              grid: {
+                    row: {
+                          colors: ['transparent'], // takes an array which will be repeated on columns
+                          opacity: 0.5
+                          },
+              },
+              xaxis: {
+                      type: 'category',
+                      categories: $(domestic_foreign_born_df.year),
+                      labels: {
+                              show: true
+                      },
+                      tooltip: {
+                                enabled: false,
+                      },
+              },
+              legend: {
+                      position: 'top',
+                      horizontalAlign: "center",
+                      inverseOrder: true
+              },
+              tooltip: {
+                x: {
+                  show: true
+                },
+              },
+              theme: {
+                      mode: 'light',
+                      palette: 'palette2',
+              },
+              plotOptions: {
+                            bar: {
+                              columnWidth: '90%',
+                              startingShape: 'flat',
+                              endingShape: 'flat',
+                            }
+              },
+              };
+
+      var domforgrowth_chart = new ApexCharts(document.querySelector("#domforgrowth_chart"), options);
+      domforgrowth_chart.render();
+  </script>
