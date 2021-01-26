@@ -39,7 +39,7 @@
   dom_1for = $(domestic_foreign_born_df.dom_born_one_foreign_parent)
   dom_2for = $(domestic_foreign_born_df.dom_born_two_foreign_parents)
   forborn = $(domestic_foreign_born_df.foreign_born)
-  forback = $(domestic_foreign_born_df.percent_forback)
+  forback = $(domestic_foreign_born_df.percent_foreign_background)
 
 var options = {
               series: [{
@@ -59,9 +59,9 @@ var options = {
                         type: 'area',
                         data: forborn
               },{
-                        name: 'Procent med utrikes bakgrund',
+                        name: 'Procent med utländsk bakgrund',
                         type: 'line',
-                        data: forborn
+                        data: forback
               }],
               chart:  {
                       height: '100%',
@@ -90,7 +90,7 @@ var options = {
               },
               stroke: {
                       curve: 'smooth',
-                      width: 1
+                      width: 3
               },
               fill: {
                 type: 'solid'
@@ -116,6 +116,38 @@ var options = {
                                 enabled: false,
                       },
               },
+              yaxis: [
+                      {
+                      seriesName: 'Inrikes födda',
+                      show: true,
+                      decimalsInFloat: 0
+                      },
+                      {
+                      seriesName: 'Inrikes födda',
+                      show: false
+                      },
+                      {
+                      seriesName: 'Inrikes födda',
+                      show: false
+                      },
+                      {
+                      seriesName: 'Inrikes födda',
+                      show: false
+                      },
+                      {
+                      seriesName: 'Procent med utländsk bakgrund',
+                      opposite: true,
+                      axisBorder: {
+                        show: true,
+                        color: '#FEB019'
+                      },
+                      labels: {
+                        style: {
+                          colors: '#FEB019',
+                        },
+                      },
+                      },
+                    ],
               legend: {
                       position: 'top',
                       horizontalAlign: "center"
@@ -185,7 +217,7 @@ var options = {
                           enabled: false
               },
               title:  {
-                      text: 'Utveckling',
+                      text: 'Utveckling per år',
                       align: 'center'
               },
               grid: {
