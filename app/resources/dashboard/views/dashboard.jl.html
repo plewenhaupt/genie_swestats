@@ -11,21 +11,21 @@
   </div>
 
   <div id="first_dash_row" class="dashboard_row row">
-    <div class="col-3">
+    <div class="col-12 col-sm-3">
       <div class="chart_box">
         <div id="gender_piechart">
         </div>
         <a id="gender_link" class="lower_left_link" href="/gender_population">Se utveckling >>></a>
       </div>
     </div>
-    <div class="col-6">
+    <div class="col-12 col-sm-6">
       <div class="chart_box">
         <div id="ages_chart">
         </div>
-        <a id="ages_link" class="lower_left_link" href="/population">Se utveckling >>></a>
+        <a id="ages_link" class="lower_left_link" href="/ages">Se utveckling >>></a>
       </div>
     </div>
-    <div class="col-3">
+    <div class="col-12 col-sm-3">
       <div class="chart_box">
         <div id="dom_foreignborn_piechart">
         </div>
@@ -35,21 +35,21 @@
   </div>
 
   <div id="second_dash_row" class="dashboard_row row">
-    <div class="col-4">
+    <div class="col-12 col-sm-4">
       <div class="chart_box">
         <div id="education_chart">
         </div>
         <a id="education_link" class="lower_left_link" href="/population">Se utveckling >>></a>
       </div>
     </div>
-    <div class="col-4">
+    <div class="col-12 col-sm-4">
       <div class="chart_box">
         <div id="income_chart">
         </div>
         <a id="income_link" class="lower_left_link" href="/population">Se utveckling >>></a>
       </div>
     </div>
-    <div class="col-4">
+    <div class="col-12 col-sm-4">
       <div class="chart_box">
         <div id="housing_chart">
         </div>
@@ -242,15 +242,16 @@ dom_foreignborn_piechart.render();
 </script>
 
 <script>
-edu_level = $(edu_level_grouped.edu_level)
-edu_labels = $(edu_level_grouped.edu_labels)
-count = $(edu_level_grouped.count)
+edu_level = $(edu_level_grouped.edu_level);
+edu_labels = $(edu_level_grouped.edu_labels);
+count = $(edu_level_grouped.count);
+year = $(edu_level_grouped.year);
 
 var options = {
             series: [{
-                      name: "Antal",
+                      name: 'Antal',
                       data: count
-            }],
+                      }],
             chart:  {
                     height: '100%',
                     type: 'bar',

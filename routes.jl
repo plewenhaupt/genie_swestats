@@ -20,11 +20,8 @@ route("/frontpage", FrontpageController.frontpage)
 using GenderPopulationController
 route("/gender_population", GenderPopulationController.gender_population)
 
-using HousingController
-route("/housing", HousingController.housing)
-
-using PoliticiansController
-route("/politicians", PoliticiansController.politicians)
-
 using PopulationController
 route("/population", PopulationController.population)
+
+using AgesController
+route("/ages", AgesController.ages)

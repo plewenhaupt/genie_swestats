@@ -1,0 +1,221 @@
+<main class="">
+
+  <div id="section_Population" class="mainsection">
+
+    <div class="title_container">
+      <h1 class="page-title">Befolkningens ålder och medellivslängd</h1>
+      <p class="source">(Källa: SCB)</p>
+    </div>
+
+    <div id="section_chartcontainer-age-distribution" class="container-fluid highchart">
+      <div id="ages_chart">
+      </div>
+    </div>
+
+    <hr class="chart_separator">
+
+    <div id="section_chartcontainer-mean-median-age" class="container-fluid highchart">
+      <div id="mean_median_age_chart">
+      </div>
+    </div>
+
+  </div>
+
+  <div class="story_button_container container-fluid">
+    <div class="story_button_row row">
+      <a href="/population_growth" id="button_1" class="story_button btn btn-primary col-md-4 col-4" role="button">
+        <p class="story_button_text">Vad består ökningen av?</p>
+      </a>
+      <button onclick="window.location.href='/dashboard';" id="button_2" class="story_button btn btn-success col-md-4 col-4">
+        <p class="story_button_text">Tillbaka till översikten</p>
+      </button>
+      <button id="button_3" class="story_button btn btn-danger col-md-4 col-4">
+        <a href="#section_chartcontainer-population">
+        <p class="story_button_text">Hur har antalet invandrade/utvandrade utvecklats?</p>
+      </button>
+    </div>
+  </div>
+
+</main>
+
+<!-- Charts -->
+<script>
+male_ages = $(agesnow_df.male_ages);
+female_ages = $(agesnow_df.female_ages);
+ages_labels = $(agesnow_df.age);
+
+var options = {
+            series: [{
+                      name: 'Män',
+                      type: 'bar',
+                      data: male_ages
+            },{
+                      name: 'Kvinnor',
+                      type: 'bar',
+                      data: female_ages
+            }],
+            chart:  {
+                    height: '100%',
+                    type: 'area',
+                    zoom: {
+                          enabled: true
+                    },
+                    toolbar: {
+                         show: true,
+                         offsetX: 0,
+                         offsetY: 0,
+                         tools: {
+                           download: false,
+                           selection: true,
+                           zoom: true,
+                           zoomin: false,
+                           zoomout: false,
+                           pan: true,
+                           reset: true
+                         }
+                    }
+                  },
+            dataLabels: {
+                        enabled: false
+            },
+            title:  {
+                    text: 'Befolkningens åldersdistribution',
+                    align: 'center'
+            },
+            grid: {
+                  row: {
+                        colors: ['transparent'], // takes an array which will be repeated on columns
+                        opacity: 0.5
+                        },
+            },
+            xaxis: {
+                    type: 'category',
+                    categories: ages_labels,
+                    tickAmount: 9,
+                    title: {
+                      text: "Ålder",
+                      offsetY: -30
+                    }
+            },
+            legend: {
+                    position: 'top',
+                    horizontalAlign: "center"
+            },
+            theme: {
+                    mode: 'light',
+                    palette: 'palette3',
+            },
+            };
+
+var ages_chart = new ApexCharts(document.querySelector("#ages_chart"), options);
+ages_chart.render();
+</script>
+
+<script>
+year = $(mean_median_age_df.year)
+mean_age_total = $(mean_median_age_df.mean_age_total)
+mean_age_men = $(mean_median_age_df.mean_age_men)
+mean_age_women = $(mean_median_age_df.mean_age_women)
+median_age_men = $(mean_median_age_df.median_age_men)
+median_age_total = $(mean_median_age_df.median_age_total)
+median_age_women = $(mean_median_age_df.median_age_women)
+
+var options = {
+              series: [{
+                        name: 'Medelålder - Totalt',
+                        type: 'line',
+                        data: mean_age_total
+              },{
+                        name: 'Medelålder - Män',
+                        type: 'line',
+                        data: mean_age_men
+              },{
+                        name: 'Medelålder - Kvinnor',
+                        type: 'line',
+                        data: mean_age_women
+              },{
+                        name: 'Medianålder - Totalt',
+                        type: 'line',
+                        data: median_age_total
+              },{
+                        name: 'Medianålder - Män',
+                        type: 'line',
+                        data: median_age_men
+              },{
+                        name: 'Medianålder - Kvinnor',
+                        type: 'line',
+                        data: median_age_women
+              }],
+              chart:  {
+                      height: '100%',
+                      type: 'line',
+                      zoom: {
+                            enabled: true
+                      },
+                      toolbar: {
+                           show: true,
+                           offsetX: 0,
+                           offsetY: 0,
+                           tools: {
+                             download: false,
+                             selection: true,
+                             zoom: true,
+                             zoomin: false,
+                             zoomout: false,
+                             pan: true,
+                             reset: true
+                           }
+                      }
+                    },
+              dataLabels: {
+                          enabled: false
+              },
+              title:  {
+                      text: 'Medel- och medianålder',
+                      align: 'center'
+              },
+              stroke: {
+                      curve: 'smooth',
+                      width: 2
+              },
+              grid: {
+                    row: {
+                          colors: ['transparent'], // takes an array which will be repeated on columns
+                          opacity: 0.5
+                          },
+              },
+              xaxis: {
+                      type: 'numeric',
+                      categories: year,
+                      tickAmount: 1,
+                      position: 'bottom',
+                      labels: {
+                               show: true
+                      },
+                      title: {
+                              text: 'Årtal',
+                              offsetY: -25
+                      },
+                      tooltip: {
+                                enabled: false,
+                      },
+              },
+              legend: {
+                      position: 'top',
+                      horizontalAlign: "center"
+              },
+              tooltip: {
+                x: {
+                  show: true
+                },
+              },
+              };
+
+      var mean_median_age_chart = new ApexCharts(document.querySelector("#mean_median_age_chart"), options);
+      mean_median_age_chart.render();
+      mean_median_age_chart.hideSeries('Medianålder - Totalt')
+      mean_median_age_chart.hideSeries('Medianålder - Män')
+      mean_median_age_chart.hideSeries('Medianålder - Kvinnor')
+
+
+</script>

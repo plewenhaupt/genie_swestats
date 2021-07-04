@@ -1,8 +1,9 @@
 using DataFrames,
         DataFramesMeta,
-        DataFunctions,
         HTTP,
         JSON
+
+using DataFunctions
 
 # Population_data
 pop_df, popnow_df = DataFunctions.population_count()
@@ -16,7 +17,7 @@ domestic_foreign_born_df, domestic_foreign_bornnow_df = DataFunctions.domestic_f
 #Education level
 edu_level_df, edu_levelnow_df = DataFunctions.education_level()
 
-edu_level_grouped = combine(groupby(edu_levelnow_df, [:edu_level, :edu_labels]), :count => sum => :count)
+edu_level_grouped = combine(groupby(edu_levelnow_df, [:edu_level, :edu_labels, :year]), :count => sum => :count)
 
 #Income
 income_df, incomenow_df = DataFunctions.income()

@@ -1,8 +1,9 @@
 using DataFrames,
-        DataFunctions,
         DataFramesMeta,
         HTTP,
         JSON
+
+using DataFunctions
 
 pop_df, popnow_df = DataFunctions.population_count()
 
