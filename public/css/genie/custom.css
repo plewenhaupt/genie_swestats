@@ -403,6 +403,10 @@ footer {
   padding-right: 3em;
 }
 
+.lastchart {
+  padding-bottom: 3em;
+}
+
 .chart_separator {
   background-color: #eff4f7;
   border-width: 20px;

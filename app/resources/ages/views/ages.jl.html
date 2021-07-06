@@ -19,6 +19,13 @@
       </div>
     </div>
 
+    <hr class="chart_separator">
+
+    <div id="section_chartcontainer-life_expectancy" class="container-fluid highchart lastchart">
+      <div id="life_expectancy_chart">
+      </div>
+    </div>
+
   </div>
 
   <div class="story_button_container container-fluid">
@@ -218,4 +225,74 @@ var options = {
       mean_median_age_chart.hideSeries('Medianålder - Kvinnor')
 
 
+</script>
+
+<script>
+categories = $(life_expectancynow_df.categories);
+men = $(life_expectancynow_df.men);
+women = $(life_expectancynow_df.women);
+
+var options = {
+            series: [{
+                      name: 'Män',
+                      type: 'bar',
+                      data: men
+            },{
+                      name: 'Kvinnor',
+                      type: 'bar',
+                      data: women
+            }],
+            chart:  {
+                    height: '100%',
+                    type: 'bar',
+                    zoom: {
+                          enabled: true
+                    },
+                    toolbar: {
+                         show: true,
+                         offsetX: 0,
+                         offsetY: 0,
+                         tools: {
+                           download: false,
+                           selection: true,
+                           zoom: true,
+                           zoomin: false,
+                           zoomout: false,
+                           pan: true,
+                           reset: true
+                         }
+                    }
+                  },
+            dataLabels: {
+                        enabled: false
+            },
+            title:  {
+                    text: 'Medellivslängd',
+                    align: 'center'
+            },
+            xaxis: {
+              categories: categories
+            },
+            yaxis: {
+              min: 70,
+              forceNiceScale: true
+            },
+            grid: {
+                  row: {
+                        colors: ['transparent'], // takes an array which will be repeated on columns
+                        opacity: 0.5
+                        },
+            },
+            legend: {
+                    position: 'top',
+                    horizontalAlign: "center"
+            },
+            theme: {
+                    mode: 'light',
+                    palette: 'palette4',
+            },
+            };
+
+var life_expectancy_chart = new ApexCharts(document.querySelector("#life_expectancy_chart"), options);
+life_expectancy_chart.render();
 </script>

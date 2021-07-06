@@ -14,6 +14,9 @@ route("/dashboard", DashboardController.dashboard)
 using DomforController
 route("/domfor", DomforController.domfor)
 
+using EduLevelsController
+route("/edu_levels", EduLevelsController.edu_levels)
+
 using FrontpageController
 route("/frontpage", FrontpageController.frontpage)
 
