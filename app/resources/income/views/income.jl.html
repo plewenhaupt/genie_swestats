@@ -1,0 +1,496 @@
+<main class="">
+
+  <div id="section_income" class="mainsection">
+
+    <div class="title_container">
+      <h1 class="page-title">Årsinkomst - utveckling</h1>
+      <p class="source">(Källa: SCB)</p>
+    </div>
+
+    <div id="section_chartcontainer-income_bar" class="container-fluid fullchart">
+      <div id="income_bar_chart">
+      </div>
+    </div>
+
+    <div id="section_chartcontainer-income_line" class="container-fluid fullchart">
+      <div id="income_line_chart">
+      </div>
+    </div>
+
+  </div>
+
+  <div class="story_button_container container-fluid">
+    <div class="story_button_row row">
+      <button onclick="window.location.href='/dashboard';" id="button_1" class="story_button btn btn-success col-md-4 col-4">
+        <p class="story_button_text">Tillbaka till översikten</p>
+      </button>
+      <button onclick="window.location.href='/dashboard';" id="button_2" class="story_button btn btn-success col-md-4 col-4">
+        <p class="story_button_text">Tillbaka till översikten</p>
+      </button>
+      <button onclick="window.location.href='/dashboard';" id="button_3" class="story_button btn btn-success col-md-4 col-4">
+        <p class="story_button_text">Tillbaka till översikten</p>
+      </button>
+    </div>
+  </div>
+
+</main>
+
+<!-- Charts -->
+<script>
+  year = $(income_levels_df.year)
+  one = $(income_levels_df.one)
+  two = $(income_levels_df.two)
+  three = $(income_levels_df.three)
+  four = $(income_levels_df.four)
+  five = $(income_levels_df.five)
+  six = $(income_levels_df.six)
+  seven = $(income_levels_df.seven)
+  eight = $(income_levels_df.eight)
+  nine = $(income_levels_df.nine)
+  ten = $(income_levels_df.ten)
+  eleven = $(income_levels_df.eleven)
+  twelve = $(income_levels_df.twelve)
+  thirteen = $(income_levels_df.thirteen)
+  fourteen = $(income_levels_df.fourteen)
+  fifteen = $(income_levels_df.fifteen)
+  sixteen = $(income_levels_df.sixteen)
+  seventeen = $(income_levels_df.seventeen)
+  eighteen = $(income_levels_df.eighteen)
+  nineteen = $(income_levels_df.nineteen)
+  twenty = $(income_levels_df.twenty)
+  twentyone = $(income_levels_df.twentyone)
+  twentytwo = $(income_levels_df.twentytwo)
+  twentythree = $(income_levels_df.twentythree)
+  twentyfour = $(income_levels_df.twentyfour)
+  twentyfive = $(income_levels_df.twentyfive)
+  twentysix = $(income_levels_df.twentysix)
+
+
+var options = {
+              series: [{
+                        name: '0 SEK/år',
+                        type: 'bar',
+                        data: one
+              },{
+                        name: '1 000 - 19 000 SEK/år',
+                        type: 'bar',
+                        data: two
+              },{
+                        name: '20 000 - 39 000 SEK/år',
+                        type: 'bar',
+                        data: three
+              },{
+                        name: '40 000 - 59 000 SEK/år',
+                        type: 'bar',
+                        data: four
+              },{
+                        name: '60 000 - 79 000 SEK/år',
+                        type: 'bar',
+                        data: five
+              },{
+                        name: '80 000 - 99 000 SEK/år',
+                        type: 'bar',
+                        data: six
+              },{
+                        name: '100 000 - 119 000 SEK/år',
+                        type: 'bar',
+                        data: seven
+              },{
+                        name: '120 000 - 139 000 SEK/år',
+                        type: 'bar',
+                        data: eight
+              },{
+                        name: '140 000 - 159 000 SEK/år',
+                        type: 'bar',
+                        data: nine
+              },{
+                        name: '160 000 - 179 000 SEK/år',
+                        type: 'bar',
+                        data: ten
+              },{
+                        name: '180 000 - 199 000 SEK/år',
+                        type: 'bar',
+                        data: eleven
+              },{
+                        name: '200 000 - 219 000 SEK/år',
+                        type: 'bar',
+                        data: twelve
+              },{
+                        name: '220 000 - 239 000 SEK/år',
+                        type: 'bar',
+                        data: thirteen
+              },{
+                        name: '240 000 - 259 000 SEK/år',
+                        type: 'bar',
+                        data: fourteen
+              },{
+                        name: '260 000 - 279 000 SEK/år',
+                        type: 'bar',
+                        data: fifteen
+              },{
+                        name: '280 000 - 299 000 SEK/år',
+                        type: 'bar',
+                        data: sixteen
+              },{
+                        name: '300 000 - 319 000 SEK/år',
+                        type: 'bar',
+                        data: seventeen
+              },{
+                        name: '320 000 - 339 000 SEK/år',
+                        type: 'bar',
+                        data: eighteen
+              },{
+                        name: '340 000 - 359 000 SEK/år',
+                        type: 'bar',
+                        data: nineteen
+              },{
+                        name: '360 000 - 379 000 SEK/år',
+                        type: 'bar',
+                        data: twenty
+              },{
+                        name: '380 000 - 399 000 SEK/år',
+                        type: 'bar',
+                        data: twentyone
+              },{
+                        name: '400 000 - 499 000 SEK/år',
+                        type: 'bar',
+                        data: twentytwo
+              },{
+                        name: '500 000 - 599 000 SEK/år',
+                        type: 'bar',
+                        data: twentythree
+              },{
+                        name: '600 000 - 799 000 SEK/år',
+                        type: 'bar',
+                        data: twentyfour
+              },{
+                        name: '800 000 - 999 000 SEK/år',
+                        type: 'bar',
+                        data: twentyfive
+              },{
+                        name: '1 000 000+ SEK/år',
+                        type: 'bar',
+                        data: twentysix
+              }],
+              chart:  {
+                      height: '100%',
+                      type: 'bar',
+                      stacked: true,
+                      zoom: {
+                            enabled: true
+                      },
+                      toolbar: {
+                           show: true,
+                           offsetX: 0,
+                           offsetY: 0,
+                           tools: {
+                             download: false,
+                             selection: true,
+                             zoom: true,
+                             zoomin: false,
+                             zoomout: false,
+                             pan: true,
+                             reset: true
+                           }
+                      }
+                    },
+              plotOptions: {
+                        bar: {
+                          columnWidth: '95%'
+                }
+              },
+              dataLabels: {
+                          enabled: false
+              },
+              colors: [colors[0],
+                      colors[1],
+                      colors[2],
+                      colors[3],
+                      colors[4],
+                      colors[5],
+                      colors[6],
+                      colors[7],
+                      colors[8],
+                      colors[9],
+                      colors[10],
+                      colors[11],
+                      colors[12],
+                      colors[13],
+                      colors[14],
+                      colors[15],
+                      colors[16],
+                      colors[17],
+                      colors[18],
+                      colors[19],
+                      colors[20],
+                      colors[21],
+                      colors[22],
+                      colors[23],
+                      colors[24],
+                      colors[25]
+                    ],
+                    fill: {
+                            type: 'solid'
+                          },
+              stroke: {
+                      curve: 'straight',
+                      width: 0
+              },
+              title:  {
+                      text: 'Inkomstnivå',
+                      align: 'center'
+              },
+              grid: {
+                    row: {
+                          colors: ['transparent'], // takes an array which will be repeated on columns
+                          opacity: 0.5
+                          },
+              },
+              xaxis: {
+                      categories: year,
+                      position: 'bottom',
+                      labels: {
+                               show: true
+                      }
+              },
+              legend: {
+                      show: true,
+                      position: 'right',
+                      horizontalAlign: "center",
+                      inverseOrder: true,
+
+              },
+              tooltip: {
+                shared: false,
+                intersect: true,
+                inverseOrder: true,
+                style: {
+                        fontSize: '9px'
+                      },
+              },
+              };
+
+      var income_bar_chart = new ApexCharts(document.querySelector("#income_bar_chart"), options);
+      income_bar_chart.render();
+  </script>
+
+  <script>
+    year = $(income_levels_df.year)
+    one = $(income_levels_df.one)
+    two = $(income_levels_df.two)
+    three = $(income_levels_df.three)
+    four = $(income_levels_df.four)
+    five = $(income_levels_df.five)
+    six = $(income_levels_df.six)
+    seven = $(income_levels_df.seven)
+    eight = $(income_levels_df.eight)
+    nine = $(income_levels_df.nine)
+    ten = $(income_levels_df.ten)
+    eleven = $(income_levels_df.eleven)
+    twelve = $(income_levels_df.twelve)
+    thirteen = $(income_levels_df.thirteen)
+    fourteen = $(income_levels_df.fourteen)
+    fifteen = $(income_levels_df.fifteen)
+    sixteen = $(income_levels_df.sixteen)
+    seventeen = $(income_levels_df.seventeen)
+    eighteen = $(income_levels_df.eighteen)
+    nineteen = $(income_levels_df.nineteen)
+    twenty = $(income_levels_df.twenty)
+    twentyone = $(income_levels_df.twentyone)
+    twentytwo = $(income_levels_df.twentytwo)
+    twentythree = $(income_levels_df.twentythree)
+    twentyfour = $(income_levels_df.twentyfour)
+    twentyfive = $(income_levels_df.twentyfive)
+    twentysix = $(income_levels_df.twentysix)
+
+
+  var options = {
+                series: [{
+                          name: '0 SEK/år',
+                          type: 'line',
+                          data: one
+                },{
+                          name: '1 000 - 19 000 SEK/år',
+                          type: 'line',
+                          data: two
+                },{
+                          name: '20 000 - 39 000 SEK/år',
+                          type: 'line',
+                          data: three
+                },{
+                          name: '40 000 - 59 000 SEK/år',
+                          type: 'line',
+                          data: four
+                },{
+                          name: '60 000 - 79 000 SEK/år',
+                          type: 'line',
+                          data: five
+                },{
+                          name: '80 000 - 99 000 SEK/år',
+                          type: 'line',
+                          data: six
+                },{
+                          name: '100 000 - 119 000 SEK/år',
+                          type: 'line',
+                          data: seven
+                },{
+                          name: '120 000 - 139 000 SEK/år',
+                          type: 'line',
+                          data: eight
+                },{
+                          name: '140 000 - 159 000 SEK/år',
+                          type: 'line',
+                          data: nine
+                },{
+                          name: '160 000 - 179 000 SEK/år',
+                          type: 'line',
+                          data: ten
+                },{
+                          name: '180 000 - 199 000 SEK/år',
+                          type: 'line',
+                          data: eleven
+                },{
+                          name: '200 000 - 219 000 SEK/år',
+                          type: 'line',
+                          data: twelve
+                },{
+                          name: '220 000 - 239 000 SEK/år',
+                          type: 'line',
+                          data: thirteen
+                },{
+                          name: '240 000 - 259 000 SEK/år',
+                          type: 'line',
+                          data: fourteen
+                },{
+                          name: '260 000 - 279 000 SEK/år',
+                          type: 'line',
+                          data: fifteen
+                },{
+                          name: '280 000 - 299 000 SEK/år',
+                          type: 'line',
+                          data: sixteen
+                },{
+                          name: '300 000 - 319 000 SEK/år',
+                          type: 'line',
+                          data: seventeen
+                },{
+                          name: '320 000 - 339 000 SEK/år',
+                          type: 'line',
+                          data: eighteen
+                },{
+                          name: '340 000 - 359 000 SEK/år',
+                          type: 'line',
+                          data: nineteen
+                },{
+                          name: '360 000 - 379 000 SEK/år',
+                          type: 'line',
+                          data: twenty
+                },{
+                          name: '380 000 - 399 000 SEK/år',
+                          type: 'line',
+                          data: twentyone
+                },{
+                          name: '400 000 - 499 000 SEK/år',
+                          type: 'line',
+                          data: twentytwo
+                },{
+                          name: '500 000 - 599 000 SEK/år',
+                          type: 'line',
+                          data: twentythree
+                },{
+                          name: '600 000 - 799 000 SEK/år',
+                          type: 'line',
+                          data: twentyfour
+                },{
+                          name: '800 000 - 999 000 SEK/år',
+                          type: 'line',
+                          data: twentyfive
+                },{
+                          name: '1 000 000+ SEK/år',
+                          type: 'line',
+                          data: twentysix
+                }],
+                  chart:  {
+                          height: '100%',
+                          type: 'line',
+                          zoom: {
+                                enabled: true
+                          },
+                          toolbar: {
+                               show: true,
+                               offsetX: 0,
+                               offsetY: 0,
+                               tools: {
+                                 download: false,
+                                 selection: true,
+                                 zoom: true,
+                                 zoomin: false,
+                                 zoomout: false,
+                                 pan: true,
+                                 reset: true
+                               }
+                          }
+                        },
+                        colors: [colors[0],
+                                colors[1],
+                                colors[2],
+                                colors[3],
+                                colors[4],
+                                colors[5],
+                                colors[6],
+                                colors[7],
+                                colors[8],
+                                colors[9],
+                                colors[10],
+                                colors[11],
+                                colors[12],
+                                colors[13],
+                                colors[14],
+                                colors[15],
+                                colors[16],
+                                colors[17],
+                                colors[18],
+                                colors[19],
+                                colors[20],
+                                colors[21],
+                                colors[22],
+                                colors[23],
+                                colors[24],
+                                colors[25]
+                              ],
+                  dataLabels: {
+                              enabled: false
+                  },
+                  stroke: {
+                          curve: 'straight',
+                          width: 2
+                  },
+                  title:  {
+                          text: 'Inkomstnivå - Utveckling per Inkomstnivå',
+                          align: 'center'
+                  },
+                  grid: {
+                        row: {
+                              colors: ['transparent'], // takes an array which will be repeated on columns
+                              opacity: 0.5
+                              },
+                  },
+                  xaxis: {
+                          categories: year,
+                          position: 'bottom',
+                          labels: {
+                                   show: true
+                          }
+                  },
+                  legend: {
+                          position: 'right',
+                          horizontalAlign: "center"
+                  },
+                  tooltip: {
+                    inverseOrder: true,
+                  },
+                  };
+
+          var income_line_chart = new ApexCharts(document.querySelector("#income_line_chart"), options);
+          income_line_chart.render();
+      </script>

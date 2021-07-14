@@ -403,6 +403,13 @@ footer {
   padding-right: 3em;
 }
 
+.fullchart {
+  height: 85vh;
+  padding-top: 0.5em;
+  padding-left: 3em;
+  padding-right: 3em;
+}
+
 .lastchart {
   padding-bottom: 3em;
 }

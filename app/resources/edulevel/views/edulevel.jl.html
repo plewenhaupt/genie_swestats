@@ -1,19 +1,19 @@
 <main class="">
 
-  <div id="section_income" class="mainsection">
+  <div id="section_edu_levels" class="mainsection">
 
     <div class="title_container">
-      <h1 class="page-title">Boendeform - Utveckling</h1>
+      <h1 class="page-title">Utbildningsnivå - utveckling</h1>
       <p class="source">(Källa: SCB)</p>
     </div>
 
-    <div id="section_chartcontainer-housing_bar" class="container-fluid fullchart">
-      <div id="housing_bar_chart">
+    <div id="section_chartcontainer-edu_levels_area" class="container-fluid fullchart">
+      <div id="edu_levels_bar_chart">
       </div>
     </div>
 
-    <div id="section_chartcontainer-housing_line" class="container-fluid fullchart">
-      <div id="housing_line_chart">
+    <div id="section_chartcontainer-edu_levels_line" class="container-fluid fullchart">
+      <div id="edu_levels_line_chart">
       </div>
     </div>
 
@@ -37,44 +37,49 @@
 
 <!-- Charts -->
 <script>
-year = $(totalhousing_df.year)
-smag = $(totalhousing_df.SMAG)
-smbo = $(totalhousing_df.SMBO)
-smhy0 = $(totalhousing_df.SMHY0)
-fbbo = $(totalhousing_df.FBBO)
-spbo = $(totalhousing_df.SPBO)
-ob = $(totalhousing_df.OB)
-ovrigt = $(totalhousing_df.ÖVRIGT)
+year = $(edu_levels_df.year)
+forgymn_less_9 = $(edu_levels_df.forgymn_less_9)
+forgymn_9 = $(edu_levels_df.forgymn_9)
+gymn_2 = $(edu_levels_df.gymn_2)
+gymn_3 = $(edu_levels_df.gymn_3)
+eftergymn_less_3 = $(edu_levels_df.eftergymn_less_3)
+eftergymn_3 = $(edu_levels_df.eftergymn_3)
+forskarutb = $(edu_levels_df.forskarutb)
+uppg_saknas = $(edu_levels_df.uppg_saknas)
 
 var options = {
               series: [{
-                        name: 'Småhus, äganderätt',
+                        name: 'Förgymnasial utbildning kortare än 9 år',
                         type: 'bar',
-                        data: smag
+                        data: forgymn_less_9
               },{
-                        name: 'Småhus, bostadsrätt',
+                        name: 'Förgymnasial utbildning, 9 år',
                         type: 'bar',
-                        data: smbo
+                        data: forgymn_9
               },{
-                        name: 'Småhus, hyresrätt',
+                        name: 'Gymnasial utbildning, högst 2 år',
                         type: 'bar',
-                        data: smhy0
+                        data: gymn_2
               },{
-                        name: 'Flerbostadshus, bostadsrätt',
+                        name: 'Gymnasial utbildning, 3 år',
                         type: 'bar',
-                        data: fbbo
+                        data: gymn_3
               },{
-                        name: 'Specialbostad',
+                        name: 'Eftergymnasial utbildning, mindre än 3 år',
                         type: 'bar',
-                        data: spbo
+                        data: eftergymn_less_3
               },{
-                        name: 'Uppgift saknas',
+                        name: 'Eftergymnasial utbildning, 3 år eller mer',
                         type: 'bar',
-                        data: ob
+                        data: eftergymn_3
               },{
-                        name: 'Övrigt boende',
+                        name: 'Forskarutbildning',
                         type: 'bar',
-                        data: ovrigt
+                        data: forskarutb
+              },{
+                        name: 'Uppgift om utbildningsnivå saknas',
+                        type: 'bar',
+                        data: uppg_saknas
               }],
               chart:  {
                       height: '100%',
@@ -98,6 +103,15 @@ var options = {
                            }
                       }
                     },
+            colors: [colors[0],
+                    colors[1],
+                    colors[2],
+                    colors[3],
+                    colors[4],
+                    colors[5],
+                    colors[6],
+                    colors[7]
+                  ],
               plotOptions: {
                         bar: {
                           columnWidth: '95%'
@@ -106,23 +120,12 @@ var options = {
               dataLabels: {
                           enabled: false
               },
-              colors: [colors[0],
-                      colors[1],
-                      colors[2],
-                      colors[3],
-                      colors[4],
-                      colors[5],
-                      colors[6]
-                    ],
-                    fill: {
-                            type: 'solid'
-                          },
               stroke: {
                       curve: 'straight',
                       width: 0
               },
               title:  {
-                      text: 'Boendeform',
+                      text: 'Utbildningsnivå - Befolkning totalt',
                       align: 'center'
               },
               grid: {
@@ -139,66 +142,66 @@ var options = {
                       }
               },
               legend: {
-                      show: true,
-                      position: 'right',
-                      horizontalAlign: "center",
-                      inverseOrder: true,
-
+                      position: 'top',
+                      horizontalAlign: 'center'
               },
               tooltip: {
-                shared: false,
-                intersect: true,
                 inverseOrder: true,
-                style: {
-                        fontSize: '9px'
-                      },
+                x: {
+                  show: true
+                },
               },
               };
 
-      var housing_bar_chart = new ApexCharts(document.querySelector("#housing_bar_chart"), options);
-      housing_bar_chart.render();
+      var edu_levels_bar_chart = new ApexCharts(document.querySelector("#edu_levels_bar_chart"), options);
+      edu_levels_bar_chart.render();
   </script>
 
 <script>
-year = $(totalhousing_df.year)
-smag = $(totalhousing_df.SMAG)
-smbo = $(totalhousing_df.SMBO)
-smhy0 = $(totalhousing_df.SMHY0)
-fbbo = $(totalhousing_df.FBBO)
-spbo = $(totalhousing_df.SPBO)
-ob = $(totalhousing_df.OB)
-ovrigt = $(totalhousing_df.ÖVRIGT)
+year = $(edu_levels_df.year)
+forgymn_less_9 = $(edu_levels_df.forgymn_less_9)
+forgymn_9 = $(edu_levels_df.forgymn_9)
+gymn_2 = $(edu_levels_df.gymn_2)
+gymn_3 = $(edu_levels_df.gymn_3)
+eftergymn_less_3 = $(edu_levels_df.eftergymn_less_3)
+eftergymn_3 = $(edu_levels_df.eftergymn_3)
+forskarutb = $(edu_levels_df.forskarutb)
+uppg_saknas = $(edu_levels_df.uppg_saknas)
 
-var options = {
-              series: [{
-                        name: 'Småhus, äganderätt',
-                        type: 'line',
-                        data: smag
-              },{
-                        name: 'Småhus, bostadsrätt',
-                        type: 'line',
-                        data: smbo
-              },{
-                        name: 'Småhus, hyresrätt',
-                        type: 'line',
-                        data: smhy0
-              },{
-                        name: 'Flerbostadshus, bostadsrätt',
-                        type: 'line',
-                        data: fbbo
-              },{
-                        name: 'Specialbostad',
-                        type: 'line',
-                        data: spbo
-              },{
-                        name: 'Uppgift saknas',
-                        type: 'line',
-                        data: ob
-              },{
-                        name: 'Övrigt boende',
-                        type: 'line',
-                        data: ovrigt
-              }],
+  var options = {
+                series: [{
+                          name: 'Förgymnasial utbildning kortare än 9 år',
+                          type: 'line',
+                          data: forgymn_less_9
+                },{
+                          name: 'Förgymnasial utbildning, 9 år',
+                          type: 'line',
+                          data: forgymn_9
+                },{
+                          name: 'Gymnasial utbildning, högst 2 år',
+                          type: 'line',
+                          data: gymn_2
+                },{
+                          name: 'Gymnasial utbildning, 3 år',
+                          type: 'line',
+                          data: gymn_3
+                },{
+                          name: 'Eftergymnasial utbildning, mindre än 3 år',
+                          type: 'line',
+                          data: eftergymn_less_3
+                },{
+                          name: 'Eftergymnasial utbildning, 3 år eller mer',
+                          type: 'line',
+                          data: eftergymn_3
+                },{
+                          name: 'Forskarutbildning',
+                          type: 'line',
+                          data: forskarutb
+                },{
+                          name: 'Uppgift om utbildningsnivå saknas',
+                          type: 'line',
+                          data: uppg_saknas
+                }],
                 chart:  {
                         height: '100%',
                         type: 'line',
@@ -220,23 +223,24 @@ var options = {
                              }
                         }
                       },
-                      colors: [colors[0],
-                              colors[1],
-                              colors[2],
-                              colors[3],
-                              colors[4],
-                              colors[5],
-                              colors[6]
-                            ],
                 dataLabels: {
                             enabled: false
                 },
+              colors: [colors[0],
+                      colors[1],
+                      colors[2],
+                      colors[3],
+                      colors[4],
+                      colors[5],
+                      colors[6],
+                      colors[7]
+                    ],
                 stroke: {
                         curve: 'straight',
                         width: 2
                 },
                 title:  {
-                        text: 'Boendeform - Utveckling per boendeform',
+                        text: 'Utbildningsnivå - Utveckling per utbildningsnivå',
                         align: 'center'
                 },
                 grid: {
@@ -253,14 +257,17 @@ var options = {
                         }
                 },
                 legend: {
-                        position: 'right',
-                        horizontalAlign: "center"
+                        position: 'top',
+                        horizontalAlign: 'center'
                 },
                 tooltip: {
-                  inverseOrder: false,
+                  inverseOrder: true,
+                  x: {
+                    show: true
+                  },
                 },
                 };
 
-        var housing_line_chart = new ApexCharts(document.querySelector("#housing_line_chart"), options);
-        housing_line_chart.render();
+        var edu_levels_line_chart = new ApexCharts(document.querySelector("#edu_levels_line_chart"), options);
+        edu_levels_line_chart.render();
     </script>

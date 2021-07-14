@@ -22,11 +22,13 @@ mean_age_year_max = maximum(ages_df.year)
 
 # Populate the mean age dataframe
 for i in mean_age_year_min:mean_age_year_max
-        mean_ages = @linq ages_df |> where(:year .== i) |>
+        mean_ages = @chain ages_df begin
+                           @subset(:year .== i)
                                     # Create the sums of the ages (dividend)
-                                    transform(total_age_sum = :age .* :total_ages,
-                                              men_age_sum = :age .* :male_ages,
-                                              women_age_sum = :age .* :female_ages)
+                           @transform(:total_age_sum = :age .* :total_ages,
+                                              :men_age_sum = :age .* :male_ages,
+                                              :women_age_sum = :age .* :female_ages)
+                        end
 
         # Calculate the mean for sexes and total
         mean_age_men = sum(mean_ages.men_age_sum)/sum(mean_ages.male_ages)
@@ -51,7 +53,8 @@ median_age_year_max = maximum(ages_df.year)
 
 # Populate the median age dataframe
 for i in median_age_year_min:median_age_year_max
-        median_ages = @linq ages_df |> where(:year .== i)
+        median_ages = @chain ages_df begin @subset(:year .== i) end
+
 
         # Get median for each gender category for the year
         median_arr = []
@@ -61,7 +64,7 @@ for i in median_age_year_min:median_age_year_max
                 positions = sum(median_ages[!, x])
                 median_position = (positions + 1)/2
                 median_ages.cumsum = cumsum(median_ages[!, x])
-                median_slice = @linq median_ages |> where(:cumsum .< median_position)
+                median_slice = @chain median_ages begin @subset(:cumsum .< median_position) end
                 median = median_slice[nrow(median_slice), :age]
 
                 push!(median_arr, median)

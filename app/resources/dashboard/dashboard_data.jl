@@ -25,4 +25,4 @@ income_df, incomenow_df = DataFunctions.income()
 #Housing
 housing_df, housingnow_df = DataFunctions.housing_form()
 
-housing_grouped = @linq housingnow_df |> where(:age .== "total")
+housing_grouped = @chain housingnow_df begin @subset(:age .== "total") end
